@@ -1,5 +1,6 @@
 import random
 import string
+import sys
 
 # -----------------------------------
 # HELPER CODE
@@ -7,6 +8,8 @@ import string
 
 
 def load_words():
+    words_file = open("words.txt") 
+    return words_file.read().split()
     """
     returns: list, a list of valid words. Words are strings of lowercase letters.
 
@@ -17,6 +20,9 @@ def load_words():
 	# file name is words.txt
 
 def choose_word(wordlist):
+    words = load_words()
+    random_num = random.randint(0,len(words) - 1)
+    return words[random_num]
     """
     wordlist (list): list of words (strings)
 
