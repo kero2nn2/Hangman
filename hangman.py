@@ -71,8 +71,19 @@ def get_available_letters(letters_guessed):
     # FILL IN YOUR CODE HERE AND DELETE "pass"
 
 
+
+def reveal_a_letter(secret_word, letters_guessed): 
+
+		available_letters = []
+
+		for letter in secret_word : 
+			if letter not in letters_guessed : 
+				avilable_letters.append(letter)
+
+		return random.choice(avialble_letters)
+
 def hangman(secret_word, with_help):
-    """
+	"""
     secret_word: string, the secret word to guess.
     with_help: boolean, this enables help functionality if true.
 
@@ -109,7 +120,7 @@ def hangman(secret_word, with_help):
       this letter to their guessed word and continue playing normally.
 
     Follows the other limitations detailed in the problem write-up.
-    """
+	"""
 	#TODO Shenouda
 	print("Welecome to Hangman!")
 	print(f"I am thinking of a word that is {len(secret_word)} letters long")
@@ -119,18 +130,27 @@ def hangman(secret_word, with_help):
 	letters_guessed = [] 
 
 	while guesses > 0 : 
-		print(f"You have {guesses} left")
+		print(f"You currently have {guesses} left")
 		print(f"Available letters: {get_available_letters(letters_guessed)}")
 
-		letter = input("Please guess a letter: ")
-		
+		letter = input("Please guess a letter: ").lower()
+
 		if letter not in string.ascii_lowercase :
-			if with_help and letter == '!' : 
-				
+			if with_help and letter == '!' :
+				if guessed >= 3 :  
+					letter_revealed = reveal_a_leater(secret_word, letters_guessed)
+					letters_guessed.append(letter_revealed)
+					print(f"Letter revealed: {letter_revealed}")
+					letters_guessed.append(letter_revealed)	
+					print(f"{get_word_progress(secret_word, letter_guessed)}")
+					guesses -= 3
+
+				else : 
+					print(f"Opps! Not engough guesses: {get_word_progress(secret_word, letters_guessed)}")
 
 			else : 
 				print(f"Opps! That is not a valid letter. Please input a letter from\
-the alphabet: {get_word_progress(secret_word, letters_guessed)}"
+the alphabet: {get_word_progress(secret_word, letters_guessed)}")
 
 		else : 
 			if letter in letters_guessed : 
