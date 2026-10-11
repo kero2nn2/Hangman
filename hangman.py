@@ -111,11 +111,47 @@ def hangman(secret_word, with_help):
     Follows the other limitations detailed in the problem write-up.
     """
 	#TODO Shenouda
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+	print("Welecome to Hangman!")
+	print(f"I am thinking of a word that is {len(secret_word)} letters long")
+	print("----------")
+	
+	guesses = 10
+	letters_guessed = [] 
 
+	while guesses > 0 : 
+		print(f"You have {guesses} left")
+		print(f"Available letters: {get_available_letters(letters_guessed)}")
 
+		letter = input("Please guess a letter: ")
+		
+		if letter not in string.ascii_lowercase :
+			if with_help and letter == '!' : 
+				
 
+			else : 
+				print(f"Opps! That is not a valid letter. Please input a letter from\
+the alphabet: {get_word_progress(secret_word, letters_guessed)}"
+
+		else : 
+			if letter in letters_guessed : 
+				print(f"Opps! You have guessed this letter before: {get_word_progress(secret_word, letters_guessed)}")
+
+			else : 
+				if letter in secret_word : 
+					print(f"Good Guess: {get_word_progress(secret_word, letters_guessed)}")
+					letters_guessed.append(letter)
+
+				else : 
+					print(f"Opps! That letter is not in my word: {get_word_progress(secret_word, letters_guessed)}")
+					letters_guessed.append(letter)
+
+					if letter in "aeoui" : 
+						guesses -= 2
+
+					else : 
+						guesses -= 1
+					
+										
 if __name__ == "__main__":
     # To test your game, uncomment the following three lines.
 
