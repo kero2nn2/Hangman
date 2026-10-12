@@ -71,6 +71,15 @@ def get_available_letters(letters_guessed):
     # FILL IN YOUR CODE HERE AND DELETE "pass"
 
 
+
+    available_letters = ""
+    for letter in "abcdefghijklmnopqrstuvwxyz":
+        if letter not in letters_guessed:
+            available_letters += letter
+
+    return available_letters
+            
+
 def hangman(secret_word, with_help):
     """
     secret_word: string, the secret word to guess.
@@ -124,4 +133,5 @@ if __name__ == "__main__":
     # hangman(secret_word, with_help)
 	#TODO Leave it
     pass
+    
 
