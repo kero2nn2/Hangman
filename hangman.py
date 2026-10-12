@@ -45,17 +45,17 @@ def has_player_won(secret_word, letters_guessed):
 
 
 def get_word_progress(secret_word, letters_guessed):
-    """
-    secret_word: string, the lowercase word the user is guessing
-    letters_guessed: list (of lowercase letters), the letters that have been
-        guessed so far
+    progress = ""
 
-    returns: string, comprised of letters and asterisks (*) that represents
-        which letters in secret_word have not been guessed so far
-    """
+    for letter in secret_word:
+        if letter in letters_guessed:
+            progress += letter
+        else:
+            progress += "*"
+
+    return progress
 	#TODO Mohammed
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
 
 
 def get_available_letters(letters_guessed):
