@@ -78,16 +78,16 @@ def reveal_a_letter(secret_word, letters_guessed):
 
 		for letter in secret_word : 
 			if letter not in letters_guessed : 
-				avilable_letters.append(letter)
+				available_letters.append(letter)
 
-		return random.choice(avialble_letters)
+		return random.choice(available_letters)
 
 
 def get_score(guesses, secret_word):
 
 	num_of_unique_letters = len(set(secret_word))
 	guesses_remaining = 10 - guesses
-    return (guesses_remaining + 4 * num_of_unique_letters )	+ ( 3 * len(secret_word) ) 
+	return (guesses_remaining + 4 * num_of_unique_letters )	+ ( 3 * len(secret_word) ) 
 	
 
 def hangman(secret_word, with_help):
@@ -182,6 +182,8 @@ the alphabet: {get_word_progress(secret_word, letters_guessed)}")
 	if has_player_won() : 
 		print("Congratulations, you won!")	
 		print(f"Your total score for this game is: {get_score(guesses, secret_word)}")	
+	else : 
+		print(f"Sorry you ran out of guesses the word is {secret_word}")
 					
 										
 if __name__ == "__main__":
@@ -191,5 +193,4 @@ if __name__ == "__main__":
     # with_help = False
     # hangman(secret_word, with_help)
 	#TODO Leave it
-    pass
 
