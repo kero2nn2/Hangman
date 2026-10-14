@@ -137,7 +137,7 @@ def hangman(secret_word, with_help):
 	guesses = 10
 	letters_guessed = [] 
 
-	while guesses > 0 : 
+	while guesses > 0 and not has_player_won(secret_word, letters_guessed): 
 		print(f"You currently have {guesses} left")
 		print(f"Available letters: {get_available_letters(letters_guessed)}")
 
@@ -171,8 +171,6 @@ the alphabet: {get_word_progress(secret_word, letters_guessed)}")
 				if letter in secret_word : 
 					letters_guessed.append(letter)
 					print(f"Good Guess: {get_word_progress(secret_word, letters_guessed)}")
-					if has_player_won(secret_word, letters_guessed) : 
-						break
 					print("----------")
 
 				else : 
