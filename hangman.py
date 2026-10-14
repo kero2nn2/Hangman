@@ -145,33 +145,40 @@ def hangman(secret_word, with_help):
 
 		if letter not in string.ascii_lowercase :
 			if with_help and letter == '!' :
-				if guessed >= 3 :  
-					letter_revealed = reveal_a_leater(secret_word, letters_guessed)
+				if guesses >= 3 :  
+					letter_revealed = reveal_a_letter(secret_word, letters_guessed)
 					letters_guessed.append(letter_revealed)
 					print(f"Letter revealed: {letter_revealed}")
-					letters_guessed.append(letter_revealed)	
-					print(f"{get_word_progress(secret_word, letter_guessed)}")
+					print(f"{get_word_progress(secret_word, letters_guessed)}")
 					guesses -= 3
+					print("----------")
 
 				else : 
 					print(f"Opps! Not engough guesses: {get_word_progress(secret_word, letters_guessed)}")
+					print("----------")
 
 			else : 
 				print(f"Opps! That is not a valid letter. Please input a letter from\
 the alphabet: {get_word_progress(secret_word, letters_guessed)}")
+				print("----------")
 
 		else : 
 			if letter in letters_guessed : 
 				print(f"Opps! You have guessed this letter before: {get_word_progress(secret_word, letters_guessed)}")
+				print("----------")
 
 			else : 
 				if letter in secret_word : 
-					print(f"Good Guess: {get_word_progress(secret_word, letters_guessed)}")
 					letters_guessed.append(letter)
+					print(f"Good Guess: {get_word_progress(secret_word, letters_guessed)}")
+					if has_player_won(secret_word, letters_guessed) : 
+						break
+					print("----------")
 
 				else : 
-					print(f"Opps! That letter is not in my word: {get_word_progress(secret_word, letters_guessed)}")
 					letters_guessed.append(letter)
+					print(f"Opps! That letter is not in my word: {get_word_progress(secret_word, letters_guessed)}")
+					print("----------")
 
 					if letter in "aeoui" : 
 						guesses -= 2
@@ -179,7 +186,7 @@ the alphabet: {get_word_progress(secret_word, letters_guessed)}")
 					else : 
 						guesses -= 1
 
-	if has_player_won() : 
+	if has_player_won(secret_word, letters_guessed) : 
 		print("Congratulations, you won!")	
 		print(f"Your total score for this game is: {get_score(guesses, secret_word)}")	
 	else : 
