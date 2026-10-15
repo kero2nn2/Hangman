@@ -30,6 +30,7 @@ def choose_word(wordlist):
 wordlist = load_words()
 
 
+
 def has_player_won(secret_word, letters_guessed):
     """
     secret_word: string, the lowercase word the user is guessing
@@ -39,9 +40,10 @@ def has_player_won(secret_word, letters_guessed):
     returns: boolean, True if all the letters of secret_word are in letters_guessed,
         False otherwise
     """
-	#TODO Youssef
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    for letter in secret_word:
+        if letter not in letters_guessed:
+            return False
+    return True
 
 
 def get_word_progress(secret_word, letters_guessed):
