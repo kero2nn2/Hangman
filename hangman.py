@@ -86,8 +86,7 @@ def reveal_a_letter(secret_word, letters_guessed):
 def get_score(guesses, secret_word):
 
 	num_of_unique_letters = len(set(secret_word))
-	guesses_remaining = 10 - guesses
-	return (guesses_remaining + 4 * num_of_unique_letters )	+ ( 3 * len(secret_word) ) 
+	return (guesses  + 4 * num_of_unique_letters )	+ ( 3 * len(secret_word) ) 
 	
 
 def hangman(secret_word, with_help):
@@ -198,4 +197,5 @@ if __name__ == "__main__":
     # with_help = False
     # hangman(secret_word, with_help)
 	#TODO Leave it
+	pass
 
